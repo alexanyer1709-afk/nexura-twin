@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexura Twin Enterprise OS | Digital Twin & Management Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen flex flex-col overflow-hidden selection:bg-cyan-500 selection:text-slate-950">
+
+<!-- Top Navbar -->
+<header class="h-16 bg-slate-900 border-b border-slate-800 px-6 flex items-center justify-between shrink-0">
+    <div class="flex items-center space-x-4">
+        <a href="index.html" class="flex items-center space-x-2 group">
+            <span class="text-xl font-black text-blue-500 group-hover:text-blue-400 transition">NEXURA</span>
+            <span class="text-xl font-black text-cyan-400 group-hover:text-cyan-300 transition">TWIN</span>
+            <span class="text-[10px] bg-cyan-950 text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded font-mono">ENTERPRISE OS</span>
+        </a>
+        <span class="text-slate-600">|</span>
+        <div class="text-xs text-slate-400 flex items-center space-x-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-mono">Planta Principal - Zona Industrial Palmira</span>
+        </div>
+    </div>
+
+    <!-- User & Role Selector -->
+    <div class="flex items-center space-x-6 text-xs">
+        <div class="flex items-center space-x-2 bg-slate-950 border border-slate-800 px-3 py-1.5 rounded-lg">
+            <span class="text-slate-400">Rol Activo:</span>
+            <select id="roleSelector" class="bg-transparent font-bold text-cyan-400 focus:outline-none cursor-pointer">
+                <option value="CEO" class="bg-slate-900 text-slate-200">CEO / Dirección General</option>
+                <option value="Almacén" class="bg-slate-900 text-slate-200">Jefe de Almacén & Logística</option>
+                <option value="HR" class="bg-slate-900 text-slate-200">Director Recursos Humanos</option>
+                <option value="Operaciones" class="bg-slate-900 text-slate-200">Supervisor de Planta</option>
+            </select>
+        </div>
+
+        <a href="index.html" class="text-slate-400 hover:text-white transition font-medium flex items-center space-x-1">
+            <span>← Salir al Sitio Web</span>
+        </a>
+    </div>
+</header>
+
+<!-- Main Content Layout -->
+<div class="flex flex-1 overflow-hidden">
+
+    <!-- Left Sidebar - Navigation -->
+    <aside class="w-64 bg-slate-900/60 border-r border-slate-800 p-4 flex flex-col justify-between shrink-0">
+        <div class="space-y-6">
+            <div>
+                <div class="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-2 px-3">Módulos del Sistema</div>
+                <nav class="space-y-1">
+                    <button onclick="switchTab('3d')" id="tab-3d" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 transition">
+                        <span class="flex items-center space-x-2"><span>🧊</span> <span>Gemelo Digital 3D</span></span>
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                    </button>
+                    <button onclick="switchTab('inventory')" id="tab-inventory" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium flex items-center justify-between text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition">
+                        <span class="flex items-center space-x-2"><span>📦</span> <span>Inventario & Activos</span></span>
+                        <span class="text-[10px] font-mono bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">142</span>
+                    </button>
+                    <button onclick="switchTab('finance')" id="tab-finance" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium flex items-center justify-between text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition">
+                        <span class="flex items-center space-x-2"><span>📊</span> <span>Finanzas & Nómina</span></span>
+                    </button>
+                    <button onclick="switchTab('hr')" id="tab-hr" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium flex items-center justify-between text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition">
+                        <span class="flex items-center space-x-2"><span>👥</span> <span>Talento Humano</span></span>
+                        <span class="text-[10px] font-mono bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">28</span>
+                    </button>
+                </nav>
+            </div>
+
+            <div>
+                <div class="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-2 px-3">Sensores IoT de Planta</div>
+                <div class="space-y-2 px-3 text-xs">
+                    <div class="flex justify-between items-center text-slate-400">
+                        <span>Energía Activa</span>
+                        <span class="font-mono text-emerald-400">42.8 kW</span>
+                    </div>
+                    <div class="flex justify-between items-center text-slate-400">
+                        <span>Temperatura Prom.</span>
+                        <span class="font-mono text-cyan-400">22.4 °C</span>
+                    </div>
+                    <div class="flex justify-between items-center text-slate-400">
+                        <span>Humedad Relativa</span>
+                        <span class="font-mono text-slate-300">58 %</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Status -->
+        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800/80 text-[11px]">
+            <div class="text-slate-400 mb-1">Estado de Servidores</div>
+            <div class="flex items-center space-x-2 text-emerald-400 font-mono font-semibold">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>Nexi Engine Sync v2.4 OK</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Center Panel - Workspaces -->
+    <main class="flex-1 bg-slate-950 p-6 overflow-y-auto custom-scrollbar relative">
+
+        <!-- VIEW 1: 3D DIGITAL TWIN VIEWER -->
+        <div id="view-3d" class="space-y-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-xl font-bold text-white">Visualizador 3D & Fotogrametría</h1>
+                    <p class="text-xs text-slate-400 mt-0.5">Control telemetría en tiempo real de la infraestructura</p>
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="setCameraView('Nave Principal')" class="bg-slate-900 border border-slate-800 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg text-xs font-mono transition">Cam 1: Nave 1</button>
+                    <button onclick="setCameraView('Almacén B')" class="bg-slate-900 border border-slate-800 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg text-xs font-mono transition">Cam 2: Almacén</button>
+                    <button onclick="setCameraView('Vista Cenital (Dron)')" class="bg-slate-900 border border-slate-800 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg text-xs font-mono transition">Cam 3: Dron D-01</button>
+                </div>
+            </div>
+
+            <!-- Simulated 3D Viewport -->
+            <div class="relative w-full h-[420px] bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden flex items-center justify-center group">
+                <!-- Grid BG Effect -->
+                <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+
+                <!-- Mock 3D Structure -->
+                <div class="relative z-10 text-center">
+                    <div class="w-48 h-32 mx-auto border-2 border-dashed border-cyan-500/50 rounded-xl bg-cyan-950/20 backdrop-blur-sm flex flex-col items-center justify-center p-4 relative shadow-2xl shadow-cyan-500/10">
+                        <span class="text-3xl mb-1">🏬</span>
+                        <span id="activeCamText" class="text-xs font-mono font-bold text-cyan-400">Nave Principal (Vista 3D)</span>
+                        <span class="text-[10px] text-slate-500 font-mono mt-1">Renderizado 3D Interactivo</span>
+
+                        <!-- Hotspots -->
+                        <div title="Sensor A1 OK" class="absolute -top-2 -right-2 w-5 h-5 bg-emerald-500/20 border border-emerald-400 rounded-full flex items-center justify-center text-[9px] font-mono text-emerald-400 animate-bounce">1</div>
+                        <div title="Stock Racks B" class="absolute -bottom-2 -left-2 w-5 h-5 bg-cyan-500/20 border border-cyan-400 rounded-full flex items-center justify-center text-[9px] font-mono text-cyan-400">2</div>
+                    </div>
+                </div>
+
+                <!-- Controls Overlay -->
+                <div class="absolute bottom-4 left-4 bg-slate-950/80 backdrop-blur-md border border-slate-800 p-3 rounded-xl text-[11px] space-y-1 font-mono text-slate-400">
+                    <div>Rotación: <span class="text-slate-200">34° Yaw | 12° Pitch</span></div>
+                    <div>FPS: <span class="text-emerald-400">60 FPS</span></div>
+                    <div>Malla 3D: <span class="text-cyan-400">1.2M Polígonos</span></div>
+                </div>
+            </div>
+
+            <!-- KPIs Row -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <div class="text-xs text-slate-400">Área Construida</div>
+                    <div class="text-xl font-black text-white mt-1">2,450 m²</div>
+                    <div class="text-[10px] text-cyan-400 mt-1 font-mono">100% Digitalizada</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <div class="text-xs text-slate-400">Valor Activo Físico</div>
+                    <div class="text-xl font-black text-white mt-1">$ 3,850M COP</div>
+                    <div class="text-[10px] text-emerald-400 mt-1 font-mono">+4.2% Avalúo Comercial</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <div class="text-xs text-slate-400">Ocupación Almacén</div>
+                    <div class="text-xl font-black text-white mt-1">78.5 %</div>
+                    <div class="text-[10px] text-amber-400 mt-1 font-mono">18 Espacios Libres</div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+                    <div class="text-xs text-slate-400">Eficiencia Energética</div>
+                    <div class="text-xl font-black text-white mt-1">A+ ISO 50001</div>
+                    <div class="text-[10px] text-emerald-400 mt-1 font-mono">-12% Consumo vs Mes Anterior</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 2: INVENTORY MODULE -->
+        <div id="view-inventory" class="hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-xl font-bold text-white">Gestión de Inventario & Racks</h1>
+                    <p class="text-xs text-slate-400 mt-0.5">Ubicación física en Gemelo Digital y valorización económica</p>
+                </div>
+                <button onclick="addInventoryItem()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition">
+                    + Registrar Nuevo Ítem
+                </button>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-950 text-slate-400 border-b border-slate-800 font-mono">
+                    <tr>
+                        <th class="p-4">CÓDIGO / ÍTEM</th>
+                        <th class="p-4">UBICACIÓN 3D</th>
+                        <th class="p-4">CANTIDAD</th>
+                        <th class="p-4">COSTO UNIT.</th>
+                        <th class="p-4">VALOR TOTAL</th>
+                        <th class="p-4">ESTADO</th>
+                    </tr>
+                    </thead>
+                    <tbody id="inventoryTable" class="divide-y divide-slate-800/60 text-slate-300">
+                    <tr>
+                        <td class="p-4 font-bold text-white">Estructuras Metálicas IPE-300</td>
+                        <td class="p-4 font-mono text-cyan-400">Rack B3 - Nivel 2</td>
+                        <td class="p-4 font-mono">45 unidades</td>
+                        <td class="p-4 font-mono">$ 850,000</td>
+                        <td class="p-4 font-mono font-bold text-emerald-400">$ 38,250,000</td>
+                        <td class="p-4"><span class="bg-emerald-950 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded font-mono text-[10px]">Stock Disponible</span></td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-bold text-white">Tableros Eléctricos Industriales Schneider</td>
+                        <td class="p-4 font-mono text-cyan-400">Zona C - Panel 01</td>
+                        <td class="p-4 font-mono">12 unidades</td>
+                        <td class="p-4 font-mono">$ 3,200,000</td>
+                        <td class="p-4 font-mono font-bold text-emerald-400">$ 38,400,000</td>
+                        <td class="p-4"><span class="bg-amber-950 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded font-mono text-[10px]">Stock Bajo</span></td>
+                    </tr>
+                    <tr>
+                        <td class="p-4 font-bold text-white">Luminarias LED Industriales 200W</td>
+                        <td class="p-4 font-mono text-cyan-400">Rack A1 - Nivel 1</td>
+                        <td class="p-4 font-mono">120 unidades</td>
+                        <td class="p-4 font-mono">$ 180,000</td>
+                        <td class="p-4 font-mono font-bold text-emerald-400">$ 21,600,000</td>
+                        <td class="p-4"><span class="bg-emerald-950 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded font-mono text-[10px]">Stock Disponible</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- VIEW 3: FINANCE & PAYROLL -->
+        <div id="view-finance" class="hidden space-y-6">
+            <div>
+                <h1 class="text-xl font-bold text-white">Estructura Financiera & Costos Fijos</h1>
+                <p class="text-xs text-slate-400 mt-0.5">Resumen de costos operacionales de la infraestructura</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-4">
+                    <h3 class="text-sm font-bold text-white flex justify-between">
+                        <span>Gastos Fijos de Planta</span>
+                        <span class="text-xs font-mono text-cyan-400">Mensual</span>
+                    </h3>
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span class="text-slate-400">Canon Arriendo Industrial</span>
+                            <span class="font-mono text-white">$ 14,500,000 COP</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span class="text-slate-400">Servicios Públicos (Energía + Agua + Gas)</span>
+                            <span class="font-mono text-white">$ 3,820,000 COP</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span class="text-slate-400">Mantenimiento Preventivo & Dron</span>
+                            <span class="font-mono text-white">$ 2,100,000 COP</span>
+                        </div>
+                        <div class="flex justify-between pt-1 text-sm font-bold">
+                            <span class="text-cyan-400">Total OpEx Fijo:</span>
+                            <span class="font-mono text-cyan-400">$ 20,420,000 COP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-4">
+                    <h3 class="text-sm font-bold text-white flex justify-between">
+                        <span>Resumen de Nómina por Departamento</span>
+                        <span class="text-xs font-mono text-emerald-400">28 Empleados</span>
+                    </h3>
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span class="text-slate-400">Operaciones de Planta & Dron (12)</span>
+                            <span class="font-mono text-white">$ 28,400,000 COP</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span class="text-slate-400">Ingeniería & BIM 3D (6)</span>
+                            <span class="font-mono text-white">$ 22,000,000 COP</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span class="text-slate-400">Administración & Ventas (10)</span>
+                            <span class="font-mono text-white">$ 24,500,000 COP</span>
+                        </div>
+                        <div class="flex justify-between pt-1 text-sm font-bold">
+                            <span class="text-emerald-400">Total Nómina + Muestra:</span>
+                            <span class="font-mono text-emerald-400">$ 74,900,000 COP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 4: HR MODULE -->
+        <div id="view-hr" class="hidden space-y-6">
+            <div>
+                <h1 class="text-xl font-bold text-white">Talento Humano & Personal de Planta</h1>
+                <p class="text-xs text-slate-400 mt-0.5">Asignación de roles y turnos operativos</p>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-xs text-slate-400 text-center py-12">
+                <span class="text-3xl block mb-2">👥</span>
+                <p class="text-slate-300 font-semibold mb-1">Módulo de Recursos Humanos Conectado</p>
+                <p>Supervisando 28 colaboradores activos en Planta Palmira.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Right Sidebar - Nexi AI Assistant -->
+    <aside class="w-80 bg-slate-900 border-l border-slate-800 flex flex-col justify-between shrink-0">
+
+        <!-- AI Header -->
+        <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/40">
+            <div class="flex items-center space-x-2">
+                <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-slate-950 text-xs shadow-lg shadow-cyan-500/20">
+                    N
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-white">Nexi AI</div>
+                    <div class="text-[10px] text-cyan-400 font-mono">Enterprise Copilot</div>
+                </div>
+            </div>
+            <span class="text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded font-mono">Online</span>
+        </div>
+
+        <!-- Chat History -->
+        <div id="chatBox" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs custom-scrollbar">
+            <div class="bg-slate-800/60 p-3 rounded-2xl rounded-tl-none border border-slate-700/50 text-slate-300 space-y-1">
+                <div class="font-bold text-cyan-400 text-[10px] uppercase font-mono">Nexi AI Assistant</div>
+                <p>Hola. Soy el asistente de **Nexura Twin OS**. Puedo analizar tu inventario, simular costos operacionales o cambiar las vistas del Gemelo Digital 3D.</p>
+                <p class="text-[10px] text-slate-400 mt-1">Prueba escribir: <code class="text-cyan-300 bg-slate-900 px-1 py-0.5 rounded">"Resumen financiero"</code> o <code class="text-cyan-300 bg-slate-900 px-1 py-0.5 rounded">"Ver almacén"</code>.</p>
+            </div>
+        </div>
+
+        <!-- Input Form -->
+        <form onsubmit="handleChatSubmit(event)" class="p-3 border-t border-slate-800 bg-slate-950">
+            <div class="flex space-x-2">
+                <input id="chatInput" type="text" placeholder="Pregunta a Nexi AI..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                <button type="submit" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-3 py-2 rounded-xl text-xs transition">
+                    Enviar
+                </button>
+            </div>
+        </form>
+
+    </aside>
+
+</div>
+
+<script>
+    // Tab switching
+    function switchTab(tab) {
+        const tabs = ['3d', 'inventory', 'finance', 'hr'];
+        tabs.forEach(t => {
+            document.getElementById(`view-${t}`).classList.add('hidden');
+            const btn = document.getElementById(`tab-${t}`);
+            if(btn) {
+                btn.className = "w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium flex items-center justify-between text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition";
+            }
+        });
+
+        document.getElementById(`view-${tab}`).classList.remove('hidden');
+        const activeBtn = document.getElementById(`tab-${tab}`);
+        if(activeBtn) {
+            activeBtn.className = "w-full text-left px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 transition";
+        }
+    }
+
+    // 3D Camera Switching
+    function setCameraView(name) {
+        document.getElementById('activeCamText').innerText = `${name} (Vista 3D)`;
+    }
+
+    // Add Inventory Item Mock
+    function addInventoryItem() {
+        const tbody = document.getElementById('inventoryTable');
+        const tr = document.createElement('tr');
+        tr.className = "divide-y divide-slate-800/60 text-slate-300 animate-pulse";
+        tr.innerHTML = `
+        <td class="p-4 font-bold text-white">Nuevo Kit Herramientas CNC</td>
+        <td class="p-4 font-mono text-cyan-400">Rack C1 - Nivel 3</td>
+        <td class="p-4 font-mono">10 unidades</td>
+        <td class="p-4 font-mono">$ 1,500,000</td>
+        <td class="p-4 font-mono font-bold text-emerald-400">$ 15,000,000</td>
+        <td class="p-4"><span class="bg-emerald-950 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded font-mono text-[10px]">Recién Ingresado</span></td>
+      `;
+        tbody.prepend(tr);
+    }
+
+    // AI Chat Handling
+    function handleChatSubmit(e) {
+        e.preventDefault();
+        const input = document.getElementById('chatInput');
+        const text = input.value.trim();
+        if(!text) return;
+
+        const chatBox = document.getElementById('chatBox');
+
+        // User Message
+        const userDiv = document.createElement('div');
+        userDiv.className = "bg-cyan-950/40 border border-cyan-500/30 p-3 rounded-2xl rounded-tr-none text-slate-200 ml-4 space-y-1";
+        userDiv.innerHTML = `<div class="font-bold text-cyan-400 text-[10px] uppercase font-mono">Tú</div><p>${text}</p>`;
+        chatBox.appendChild(userDiv);
+
+        input.value = '';
+
+        // AI Response Logic
+        setTimeout(() => {
+            const aiDiv = document.createElement('div');
+            aiDiv.className = "bg-slate-800/60 p-3 rounded-2xl rounded-tl-none border border-slate-700/50 text-slate-300 space-y-1";
+
+            let reply = "Entendido. He analizado tu consulta contra los datos telemétricos de la planta y los registros contables.";
+
+            const lower = text.toLowerCase();
+            if(lower.includes("financiero") || lower.includes("costo") || lower.includes("dinero")) {
+                reply = "El costo operativo fijo actual de la planta es de **$20,420,000 COP/mes**, con un valor total de nómina de **$74,900,000 COP**. Puedes revisar el detalle completo en la pestaña **Finanzas & Nómina**.";
+                switchTab('finance');
+            } else if(lower.includes("almacen") || lower.includes("inventario") || lower.includes("stock")) {
+                reply = "Actualmente tienes **142 ítems** mapeados en el Gemelo Digital. He cambiado la vista activa al panel de **Inventario & Activos**.";
+                switchTab('inventory');
+            } else if(lower.includes("3d") || lower.includes("dron") || lower.includes("camara")) {
+                reply = "Ajustando ángulo de cámara y cargando malla 3D de alta densidad...";
+                switchTab('3d');
+            }
+
+            aiDiv.innerHTML = `<div class="font-bold text-cyan-400 text-[10px] uppercase font-mono">Nexi AI Assistant</div><p>${reply}</p>`;
+            chatBox.appendChild(aiDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 500);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+</script>
+
+</body>
+</html>
