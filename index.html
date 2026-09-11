@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexura Twin OS - Industrial Digital Twin & GIS SaaS (Real-Time)</title>
+    <title>Nexura Twin OS - Industrial, Hotel & Real Estate Digital Twin SaaS</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,9 +12,10 @@
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#0b0f19',
-                        cardBg: '#131c31',
-                        accentBlue: '#3b82f6',
+                        darkBg: '#080c14',
+                        cardBg: '#0f172a',
+                        cardHover: '#1e293b',
+                        accentBlue: '#2563eb',
                         accentCyan: '#06b6d4',
                     }
                 }
@@ -29,18 +30,21 @@
 <!-- CONTENEDOR DE ALERTAS EN TIEMPO REAL (TOASTS) -->
 <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3 pointer-events-none"></div>
 
-<!-- LANDING PAGE SUPERIOR (PRESENTACIÓN INICIAL) -->
-<header class="bg-darkBg/90 backdrop-blur-md border-b border-slate-800 px-6 py-4 flex items-center justify-between sticky top-0 z-40">
-    <div class="flex items-center space-x-2">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/20">NX</div>
-        <span class="text-lg font-extrabold tracking-wider bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">NEXURA <span class="text-cyan-400 font-light">TWIN</span></span>
+<!-- LANDING PAGE SUPERIOR (PRESENTACIÓN INICIAL DE NIVEL MUNDIAL) -->
+<header class="bg-darkBg/90 backdrop-blur-md border-b border-slate-800/80 px-6 py-4 flex items-center justify-between sticky top-0 z-40">
+    <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/30">NX</div>
+        <div>
+            <span class="text-base font-black tracking-wider bg-gradient-to-r from-white via-slate-200 to-cyan-400 bg-clip-text text-transparent">NEXURA <span class="text-cyan-400 font-light">TWIN OS</span></span>
+            <span class="block text-[9px] text-slate-400 font-mono tracking-widest uppercase">Global Physical-to-Digital Platform</span>
+        </div>
     </div>
     <div class="flex items-center space-x-4">
-        <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Cloud Global: En Línea
+        <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Servidor Global: En Línea (12ms)
         </div>
-        <button onclick="scrollToPortal('visor')" class="text-xs text-slate-300 hover:text-white font-medium flex items-center gap-1 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 transition">
-            PORTAL OS <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        <button onclick="scrollToPortal('visor')" class="text-xs text-slate-200 hover:text-white font-semibold flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 px-4 py-2 rounded-xl shadow-lg shadow-cyan-500/20 transition">
+            <span>ABRIR PORTAL OS</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
         </button>
         <button onclick="toggleMobileMenu()" class="text-slate-400 hover:text-white md:hidden text-xl">
             <i class="fa-solid fa-bars"></i>
@@ -48,285 +52,375 @@
     </div>
 </header>
 
-<!-- HERO SECTION (LA PRESENTACIÓN TIPO "GTA 6" INDUSTRIAL) -->
-<section class="px-6 py-16 md:py-24 max-w-6xl mx-auto space-y-12 border-b border-slate-800/80">
-    <div class="space-y-4 max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wider uppercase">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span> Operación Global en Tiempo Real
+<!-- HERO SECTION (LA PRESENTACIÓN "GTA 6" PARA PASAR TU EMPRESA AL DIGITAL) -->
+<section class="px-6 py-16 md:py-24 max-w-7xl mx-auto space-y-12 border-b border-slate-800/80">
+    <div class="space-y-6 max-w-4xl">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold tracking-wider uppercase shadow-inner">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span> El Sistema Operativo del Mundo Físico
         </div>
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white leading-tight font-serif">
-            El doble exacto <br><span class="italic font-light text-cyan-400">de tu operación.</span>
+        <h1 class="text-4xl md:text-7xl font-black tracking-tight text-white leading-tight font-serif">
+            Pasa tu empresa física <br><span class="italic font-light text-cyan-400">al gemelo digital exacto.</span>
         </h1>
-        <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-            Capturamos el sitio, lo convertimos en un gemelo 3D vivo y lo operamos al instante desde cualquier parte del mundo. Coordenadas milimétricas en tiempo real, sin demoras.
+        <p class="text-slate-400 text-base md:text-lg leading-relaxed max-w-3xl">
+            Hoteles, constructoras, inmobiliarias, plantas industriales y sedes corporativas levantadas desde cero mediante fotogrametría LiDAR y CAD/BIM. Administra, mide, recorre y opera tu negocio completo a un clic de distancia desde cualquier parte del mundo en tiempo real.
         </p>
+
+        <!-- SELECTOR DE SECTOR DINÁMICO EN EL HERO -->
+        <div class="pt-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2"><i class="fa-solid fa-layer-group text-cyan-400 mr-1"></i> Selecciona tu sector para simular la plataforma:</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <button onclick="selectSector('industrial')" id="btn-sec-industrial" class="p-3 rounded-xl border border-cyan-500 bg-cyan-500/10 text-cyan-300 text-xs font-bold flex flex-col items-center gap-2 transition hover:bg-cyan-500/20">
+                    <i class="fa-solid fa-industry text-lg"></i> Plantas & Industrias
+                </button>
+                <button onclick="selectSector('hotel')" id="btn-sec-hotel" class="p-3 rounded-xl border border-slate-800 bg-cardBg text-slate-300 text-xs font-bold flex flex-col items-center gap-2 transition hover:border-slate-700">
+                    <i class="fa-solid fa-hotel text-lg text-amber-400"></i> Hoteles & Resorts
+                </button>
+                <button onclick="selectSector('constructora')" id="btn-sec-constructora" class="p-3 rounded-xl border border-slate-800 bg-cardBg text-slate-300 text-xs font-bold flex flex-col items-center gap-2 transition hover:border-slate-700">
+                    <i class="fa-solid fa-helmet-safety text-lg text-blue-400"></i> Constructoras & Obra
+                </button>
+                <button onclick="selectSector('inmobiliaria')" id="btn-sec-inmobiliaria" class="p-3 rounded-xl border border-slate-800 bg-cardBg text-slate-300 text-xs font-bold flex flex-col items-center gap-2 transition hover:border-slate-700">
+                    <i class="fa-solid fa-building text-lg text-emerald-400"></i> Inmobiliarias & Lotes
+                </button>
+            </div>
+        </div>
+
         <div class="flex flex-wrap gap-4 pt-4">
-            <button onclick="scrollToPortal('visor')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition shadow-lg shadow-cyan-500/20 flex items-center gap-2">
-                <i class="fa-solid fa-cube"></i> Entrar al portal
+            <button onclick="scrollToPortal('visor')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold px-7 py-3.5 rounded-xl text-sm transition shadow-xl shadow-cyan-500/20 flex items-center gap-2">
+                <i class="fa-solid fa-cube"></i> Entrar al Portal OS
             </button>
-            <button onclick="scrollToPortal('captura')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-6 py-3 rounded-xl text-sm transition flex items-center gap-2">
-                <i class="fa-solid fa-drone"></i> Solicitar captura
+            <button onclick="scrollToPortal('captura')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-7 py-3.5 rounded-xl text-sm transition flex items-center gap-2">
+                <i class="fa-solid fa-drone"></i> Solicitar Levantamiento
             </button>
         </div>
     </div>
 
     <!-- Estadísticas de Impacto en Vivo -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-slate-800/60">
-        <div class="bg-cardBg/40 border border-slate-800/80 p-4 rounded-xl">
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Error Medio GIS</span>
-            <p class="text-3xl md:text-4xl font-black text-white mt-1">8 mm</p>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 pt-6 border-t border-slate-800/80">
+        <div class="bg-cardBg/60 border border-slate-800 p-5 rounded-2xl shadow-lg">
+            <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Precisión Geométrica</span>
+            <p class="text-3xl md:text-4xl font-black text-white mt-1">± 2 mm</p>
+            <span class="text-[11px] text-cyan-400 mt-1 block">Escaneo láser LiDAR de alta densidad</span>
         </div>
-        <div class="bg-cardBg/40 border border-slate-800/80 p-4 rounded-xl">
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Activos en Red</span>
-            <p id="live-assets-count" class="text-3xl md:text-4xl font-black text-cyan-400 mt-1">1.248</p>
+        <div class="bg-cardBg/60 border border-slate-800 p-5 rounded-2xl shadow-lg">
+            <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Activos Digitalizados</span>
+            <p id="live-assets-count" class="text-3xl md:text-4xl font-black text-cyan-400 mt-1">4.820</p>
+            <span class="text-[11px] text-emerald-400 mt-1 block"><i class="fa-solid fa-arrow-trend-up"></i> Sincronizados en tiempo real</span>
         </div>
-        <div class="bg-cardBg/40 border border-slate-800/80 p-4 rounded-xl">
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Uptime Global SaaS</span>
-            <p class="text-3xl md:text-4xl font-black text-emerald-400 mt-1">99.98%</p>
+        <div class="bg-cardBg/60 border border-slate-800 p-5 rounded-2xl shadow-lg">
+            <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Área Bajo Cobertura</span>
+            <p class="text-3xl md:text-4xl font-black text-white mt-1">1.2M m²</p>
+            <span class="text-[11px] text-slate-400 mt-1 block">Plantas, hoteles y macro-lotes</span>
+        </div>
+        <div class="bg-cardBg/60 border border-slate-800 p-5 rounded-2xl shadow-lg">
+            <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Disponibilidad Cloud</span>
+            <p class="text-3xl md:text-4xl font-black text-emerald-400 mt-1">99.99%</p>
+            <span class="text-[11px] text-slate-400 mt-1 block">Acceso global instantáneo</span>
         </div>
     </div>
 </section>
 
-<!-- PORTAL OPERATIVO SAAS (EL NÚCLEO DE TRABAJO) -->
-<div id="app-portal" class="flex flex-1 relative overflow-hidden min-h-[700px]">
+<!-- PORTAL OPERATIVO SAAS (EL NÚCLEO DE TRABAJO EN TIEMPO REAL) -->
+<div id="app-portal" class="flex flex-1 relative overflow-hidden min-h-[750px]">
 
     <!-- BARRA LATERAL DEL PORTAL -->
-    <aside id="sidebar" class="absolute md:relative z-30 inset-y-0 left-0 w-64 bg-cardBg border-r border-slate-800 flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+    <aside id="sidebar" class="absolute md:relative z-30 inset-y-0 left-0 w-72 bg-cardBg border-r border-slate-800 flex flex-col justify-between transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out shadow-2xl">
         <div class="p-4 space-y-6">
-            <!-- Selector de Empresa -->
-            <div>
-                <label class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block mb-1">Contexto de Empresa</label>
-                <select id="company-selector" onchange="changeCompanyContext(this)" class="w-full bg-slate-900 border border-slate-700 text-xs rounded p-2 text-cyan-400 font-medium outline-none">
-                    <option value="global">Todas las Empresas (Global)</option>
-                    <option value="c1">Haceb Planta Principal</option>
-                    <option value="c2">Parque Industrial Pacífico</option>
+            <!-- Selector de Empresa / Proyecto -->
+            <div class="space-y-1.5">
+                <label class="text-[10px] uppercase tracking-wider text-slate-400 font-bold block">Empresa / Proyecto Activo</label>
+                <select id="company-selector" onchange="changeCompanyContext(this)" class="w-full bg-slate-900 border border-slate-700 text-xs rounded-xl p-2.5 text-cyan-400 font-semibold outline-none cursor-pointer">
+                    <option value="c1">Hotel Grand Resort & Spa (Caribe)</option>
+                    <option value="c2">Constructora Torre Alta (Bogotá)</option>
+                    <option value="c3">Haceb Planta Principal (Medellín)</option>
+                    <option value="c4">Inmobiliaria Lotes del Pacífico</option>
                 </select>
             </div>
 
             <!-- Menú de Módulos Operativos -->
-            <nav class="space-y-1">
-                <a href="#visor" onclick="switchTab('visor')" class="nav-link flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-blue-600 text-white shadow-lg shadow-blue-900/40 transition">
-                    <i class="fa-solid fa-cube w-5"></i>
-                    <span>Remoldeado & Visor 3D</span>
+            <nav class="space-y-1.5">
+                <a href="#visor" onclick="switchTab('visor')" class="nav-link flex items-center space-x-3 px-3.5 py-3 rounded-xl text-sm font-semibold bg-blue-600 text-white shadow-lg shadow-blue-900/40 transition">
+                    <i class="fa-solid fa-cube w-5 text-lg"></i>
+                    <span>Visor 3D & Remoldeado BIM</span>
                 </a>
-                <a href="#mision" onclick="switchTab('mision')" class="nav-link flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition">
-                    <i class="fa-solid fa-rocket w-5 text-cyan-400"></i>
-                    <span>Misión & Visión (El Futuro)</span>
+                <a href="#mision" onclick="switchTab('mision')" class="nav-link flex items-center space-x-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-rocket w-5 text-cyan-400 text-lg"></i>
+                    <span>Manifiesto Nexura (Visión)</span>
                 </a>
-                <a href="#captura" onclick="switchTab('captura')" class="nav-link flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition">
-                    <i class="fa-solid fa-drone w-5 text-blue-400"></i>
-                    <span>Solicitud de Captura</span>
+                <a href="#captura" onclick="switchTab('captura')" class="nav-link flex items-center space-x-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-drone w-5 text-blue-400 text-lg"></i>
+                    <span>Solicitud de Captura & Drones</span>
                 </a>
-                <a href="#gis" onclick="switchTab('gis')" class="nav-link flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition">
-                    <i class="fa-solid fa-map-location-dot w-5 text-emerald-400"></i>
-                    <span>Minimapa & Sucursales</span>
+                <a href="#gis" onclick="switchTab('gis')" class="nav-link flex items-center space-x-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-map-location-dot w-5 text-emerald-400 text-lg"></i>
+                    <span>Minimapa & Sedes GIS</span>
                 </a>
-                <a href="#inventario" onclick="switchTab('inventario')" class="nav-link flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition">
-                    <i class="fa-solid fa-boxes-stacked w-5 text-amber-400"></i>
+                <a href="#inventario" onclick="switchTab('inventario')" class="nav-link flex items-center space-x-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-boxes-stacked w-5 text-amber-400 text-lg"></i>
                     <span>Inventario de Activos 3D</span>
                 </a>
-                <a href="#usuarios" onclick="switchTab('usuarios')" class="nav-link flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition">
-                    <i class="fa-solid fa-users-gear w-5 text-purple-400"></i>
-                    <span>Usuarios & Permisos</span>
+                <a href="#usuarios" onclick="switchTab('usuarios')" class="nav-link flex items-center space-x-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa-solid fa-users-gear w-5 text-purple-400 text-lg"></i>
+                    <span>Usuarios & Permisos Cloud</span>
                 </a>
             </nav>
         </div>
 
-        <div class="p-4 border-t border-slate-800 bg-slate-950/40">
+        <div class="p-4 border-t border-slate-800 bg-slate-950/60">
             <span class="text-[10px] uppercase tracking-wider text-rose-500 font-bold block mb-1">Panel Dueño Nexura</span>
-            <button onclick="switchTab('gestion')" class="w-full text-left flex items-center space-x-2 text-xs text-slate-300 hover:text-white py-1 transition">
-                <i class="fa-solid fa-shield-halved text-rose-400"></i>
-                <span>Gestión Global Nexura</span>
+            <button onclick="switchTab('gestion')" class="w-full text-left flex items-center justify-between text-xs text-slate-300 hover:text-white py-1.5 px-2 rounded-lg hover:bg-slate-900 transition">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-rose-400"></i> Gestión Global de Tenants</span>
+                <i class="fa-solid fa-chevron-right text-[10px] text-slate-500"></i>
             </button>
         </div>
     </aside>
 
-    <!-- CONTENIDO DEL PORTAL (MÓDULOS) -->
-    <main class="flex-1 p-4 md:p-6 overflow-y-auto bg-slate-950/40">
+    <!-- CONTENIDO PRINCIPAL DEL PORTAL -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto bg-slate-950/60 space-y-6">
 
-        <!-- 1. VISOR 3D -->
+        <!-- 1. VISOR 3D & REMOLDEADO BIM -->
         <section id="tab-visor" class="tab-content space-y-6">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-cardBg border border-slate-800 p-5 rounded-2xl shadow-xl">
                 <div>
-                    <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-                        <i class="fa-solid fa-vr-cardboard text-cyan-400"></i> Visualizador y Remoldeado 3D Digital Twin
-                    </h2>
-                    <p class="text-xs md:text-sm text-slate-400 mt-1">Sincronización de malla CAD/BIM y telemetría en vivo vía WebSockets.</p>
+                    <div class="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">
+                        <i class="fa-solid fa-vr-cardboard"></i> Motor Gráfico WebGL en Tiempo Real
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-black text-white" id="visor-title">Visualizador 3D: Hotel Grand Resort & Spa</h2>
+                    <p class="text-xs text-slate-400 mt-1">Recorrido virtual interactivo, cotas milimétricas y telemetría de activos vinculados.</p>
                 </div>
-                <button onclick="triggerMeshProcess()" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold px-4 py-2.5 rounded-lg shadow-lg shadow-cyan-500/20 flex items-center gap-2 transition">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Re-Procesar Malla al Instante
-                </button>
+                <div class="flex items-center gap-3">
+                    <button onclick="triggerMeshProcess()" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-lg shadow-cyan-500/20 flex items-center gap-2 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Re-Procesar Malla BIM
+                    </button>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col relative min-h-[400px]">
+                <!-- Vista 3D Simulada -->
+                <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col relative min-h-[450px] shadow-2xl">
                     <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-800 text-xs">
-                        <span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded font-medium">Stream Activo: Nodo Cloud Principal #4</span>
-                        <div class="flex gap-1">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse my-auto mr-1"></span>
-                            <span class="text-slate-300 font-mono text-[11px]">60 FPS</span>
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span class="text-slate-200 font-mono font-semibold" id="stream-node-text">Stream Activo: Hotel Nodo Caribe #2</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-slate-800 text-cyan-400 px-2.5 py-1 rounded-lg font-mono text-[11px]">60 FPS / Latencia 12ms</span>
                         </div>
                     </div>
-                    <div class="flex-1 bg-slate-950 rounded-lg border border-slate-800 flex items-center justify-center relative overflow-hidden group">
-                        <div class="w-52 h-36 border-2 border-cyan-500/60 rounded-lg transform rotate-x-12 rotate-y-45 animate-pulse flex items-center justify-center bg-cyan-500/5">
-                            <span class="text-xs text-cyan-300 font-mono font-bold tracking-widest">GEMELO 3D VIVO</span>
+
+                    <div class="flex-1 bg-slate-950 rounded-xl border border-slate-800/80 flex flex-col items-center justify-center relative overflow-hidden group">
+                        <!-- Elemento visual interactivo 3D -->
+                        <div class="w-64 h-44 border-2 border-cyan-500/50 rounded-2xl transform rotate-x-12 rotate-y-45 animate-pulse flex flex-col items-center justify-center bg-gradient-to-tr from-cyan-500/10 to-blue-600/10 shadow-2xl shadow-cyan-500/20">
+                            <i class="fa-solid fa-cube text-4xl text-cyan-400 mb-2"></i>
+                            <span class="text-xs text-white font-mono font-bold tracking-widest" id="render-object-label">GEMELO 3D HOTEL</span>
+                            <span class="text-[10px] text-cyan-300 mt-1">Precisión: ±2mm • Coordenadas GPS Activas</span>
                         </div>
-                        <div class="absolute bottom-3 left-3 bg-slate-900/90 border border-slate-800 px-3 py-1.5 rounded text-[11px] text-slate-400 flex items-center gap-2">
-                            <i class="fa-solid fa-satellite-dish text-cyan-400"></i> Latencia: <span class="text-emerald-400 font-mono">14ms</span>
+
+                        <div class="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur border border-slate-800 px-4 py-2 rounded-xl text-xs text-slate-300 flex items-center gap-3">
+                            <i class="fa-solid fa-hand text-cyan-400"></i> <span>Usa el mouse para rotar, hacer zoom y examinar cada rincón.</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-cardBg border border-slate-800 rounded-xl p-4 flex flex-col justify-between space-y-4">
+                <!-- Panel de Controles del Gemelo -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-xl">
                     <div class="space-y-4 text-xs">
-                        <h3 class="text-sm font-bold text-white border-b border-slate-800 pb-2">Controles Remotos de Servidor</h3>
+                        <h3 class="text-sm font-bold text-white border-b border-slate-800 pb-2">Capas & Telemetría en Vivo</h3>
+
                         <div>
-                            <label class="text-slate-400 block mb-1">Capa Fotogramétrica en Vivo</label>
-                            <select onchange="showToast('Capa cambiada en tiempo real con éxito')" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-slate-200 outline-none">
-                                <option>Estructura Metálica & Columnas</option>
+                            <label class="text-slate-400 block mb-1 font-semibold">Capa de Visualización</label>
+                            <select onchange="showToast('Cambiando capa de renderizado en tiempo real...')" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-slate-200 outline-none cursor-pointer">
+                                <option>Malla Texturizada Realista (RGB)</option>
                                 <option>Nube de Puntos LiDAR Bruta</option>
-                                <option>Mapa Térmico Infrarrojo</option>
+                                <option>Estructura BIM & Tuberías</option>
+                                <option>Mapa Térmico / Infrarrojo</option>
                             </select>
                         </div>
+
                         <div>
-                            <label class="text-slate-400 block mb-1">Escala de Detalle BIM</label>
-                            <input type="range" class="w-full accent-cyan-400 cursor-pointer" min="1" max="100" value="85" oninput="showToast('Sincronizando nivel de detalle geométrico...')">
+                            <label class="text-slate-400 block mb-1 font-semibold">Nivel de Detalle Geométrico (LOD)</label>
+                            <input type="range" class="w-full accent-cyan-400 cursor-pointer" min="1" max="100" value="90" oninput="showToast('Sincronizando polígonos BIM con servidor cloud...')">
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Estado del Edificio:</span>
+                                <span class="text-emerald-400 font-bold">Óptimo (100%)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Sensores IoT Activos:</span>
+                                <span class="text-cyan-400 font-bold">142 nodos</span>
+                            </div>
                         </div>
                     </div>
-                    <button onclick="exportModel()" class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs py-2.5 rounded font-medium transition">
-                        Descargar Gemelo (.OBJ / .IFC)
+
+                    <button onclick="exportModel()" class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs py-3 rounded-xl font-bold transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-download"></i> Descargar Gemelo (.OBJ / .IFC / .DWG)
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- 2. MISIÓN Y VISIÓN -->
+        <!-- 2. MANIFIESTO NEXURA (MISIÓN & VISIÓN) -->
         <section id="tab-mision" class="tab-content hidden space-y-6 max-w-4xl mx-auto">
-            <div class="text-center space-y-2">
-                <span class="bg-cyan-500/10 text-cyan-400 text-xs font-semibold px-3 py-1 rounded-full border border-cyan-500/20">MANIFIESTO NEXURA</span>
-                <h2 class="text-3xl font-extrabold text-white">El GTA 6 Industrial para Operar el Mundo Real</h2>
-                <p class="text-slate-400 text-sm">Todo sincronizado de punta a punta, sin importar si estás en Bogotá, Madrid o Tokio.</p>
+            <div class="text-center space-y-3">
+                <span class="bg-cyan-500/10 text-cyan-400 text-xs font-semibold px-3.5 py-1.5 rounded-full border border-cyan-500/20">EL FUTURO DEL MUNDO FÍSICO</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white font-serif">Haciendo historia: De lo físico a lo digital total</h2>
+                <p class="text-slate-400 text-sm md:text-base leading-relaxed">Permitimos que cualquier empresa, hotel, constructora o inmobiliaria tenga su operación exacta en la nube.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-                <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-3">
-                    <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-bullseye text-blue-400"></i> Misión</h3>
-                    <p class="text-slate-300 text-xs leading-relaxed">Conectar plantas físicas e infraestructura inmobiliaria con gemelos virtuales interactivos que responden de manera inmediata al clic del operador.</p>
+                <div class="bg-cardBg border border-slate-800 p-7 rounded-2xl space-y-3 shadow-xl">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-bullseye text-blue-400"></i> Nuestra Misión</h3>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">Eliminar las conjeturas en la administración de espacios físicos. Convertimos cada hotel, edificio en construcción o planta industrial en un gemelo interactivo de alta precisión operable con un clic desde cualquier parte del mundo.</p>
                 </div>
-                <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl space-y-3">
-                    <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-eye text-cyan-400"></i> Visión</h3>
-                    <p class="text-slate-300 text-xs leading-relaxed">Liderar el mercado global de software SaaS geoespacial e industrial con una velocidad y precisión milimétrica insuperable.</p>
+                <div class="bg-cardBg border border-slate-800 p-7 rounded-2xl space-y-3 shadow-xl">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-eye text-cyan-400"></i> Nuestra Visión</h3>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">Ser la plataforma SaaS estándar a nivel global para el levantamiento, modelado 3D y control de infraestructura física, liderando la transición hacia la gestión digital inmersiva.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 3. SOLICITUD DE CAPTURA -->
+        <!-- 3. SOLICITUD DE CAPTURA & DRONES -->
         <section id="tab-captura" class="tab-content hidden space-y-6">
             <div>
                 <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-2">
                     <i class="fa-solid fa-plane-up text-blue-400"></i> Solicitud de Captura & Carga Fotogramétrica
                 </h2>
-                <p class="text-xs md:text-sm text-slate-400 mt-1">Despacha misiones de drones autónomos o sube lotes de fotos con despliegue en la nube al instante.</p>
+                <p class="text-xs md:text-sm text-slate-400 mt-1">Programa misiones de vuelo autónomo con drones o sube lotes de imágenes aéreas/terrestres para procesamiento automático.</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-cardBg border border-slate-800 rounded-xl p-6 space-y-4">
-                    <h3 class="text-sm font-bold text-white border-b border-slate-800 pb-2">Programar Misión de Vuelo Autónomo</h3>
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+                    <h3 class="text-sm font-bold text-white border-b border-slate-800 pb-2">Programar Misión de Levantamiento</h3>
                     <form onsubmit="handleDroneSubmit(event)" class="space-y-4 text-xs">
                         <div>
-                            <label class="text-slate-400 block mb-1">Ubicación / Sucursal</label>
-                            <input type="text" required placeholder="Ej: Planta Principal Norte" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white outline-none">
+                            <label class="text-slate-400 block mb-1 font-semibold">Tipo de Sitio</label>
+                            <select class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-white outline-none">
+                                <option>Hotel / Resort Turístico</option>
+                                <option>Obra en Construcción / Lote</option>
+                                <option>Planta Industrial / Bodega</option>
+                                <option>Edificio Corporativo</option>
+                            </select>
                         </div>
                         <div>
-                            <label class="text-slate-400 block mb-1">Fecha de Despacho</label>
-                            <input type="date" required class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white outline-none">
+                            <label class="text-slate-400 block mb-1 font-semibold">Ubicación / Dirección exacta</label>
+                            <input type="text" required placeholder="Ej: Km 12 Vía al Mar, Resort Blue" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-white outline-none">
                         </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded transition">Despachar Misión en Vivo</button>
+                        <div>
+                            <label class="text-slate-400 block mb-1 font-semibold">Fecha estimada de vuelo</label>
+                            <input type="date" required class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-white outline-none">
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-blue-600/30">Despachar Misión de Drones</button>
                     </form>
                 </div>
-                <div class="bg-cardBg border border-slate-800 rounded-xl p-6 flex flex-col justify-between space-y-4">
-                    <h3 class="text-sm font-bold text-white border-b border-slate-800 pb-2">Carga Directa de Fotografías (.JPG / .RAW / .ZIP)</h3>
-                    <div class="border-2 border-dashed border-slate-700 hover:border-cyan-400 rounded-xl p-8 text-center cursor-pointer bg-slate-900/50 transition" onclick="document.getElementById('file-input').click()">
-                        <i class="fa-solid fa-cloud-arrow-up text-3xl text-cyan-400 mb-2"></i>
-                        <p class="text-xs font-semibold text-slate-200">Haz clic o arrastra tus archivos aquí</p>
-                        <span class="text-[10px] text-slate-500 block mt-1">Procesamiento automático en servidor cloud</span>
+
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4 shadow-xl">
+                    <h3 class="text-sm font-bold text-white border-b border-slate-800 pb-2">Carga Directa de Fotografías (.ZIP / .JPG / .RAW)</h3>
+                    <div class="border-2 border-dashed border-slate-700 hover:border-cyan-400 rounded-2xl p-8 text-center cursor-pointer bg-slate-900/50 transition" onclick="document.getElementById('file-input').click()">
+                        <i class="fa-solid fa-cloud-arrow-up text-4xl text-cyan-400 mb-3"></i>
+                        <p class="text-xs font-bold text-slate-200">Haz clic o arrastra tus fotos de levantamiento aquí</p>
+                        <span class="text-[10px] text-slate-500 block mt-1">Generación automática de malla 3D en la nube de Nexura</span>
                         <input type="file" id="file-input" multiple class="hidden" onchange="handleFileUpload(this.files)">
                     </div>
-                    <div id="upload-status" class="text-xs text-slate-400 text-center font-mono">Estado: Esperando archivos de origen...</div>
+                    <div id="upload-status" class="text-xs text-slate-400 text-center font-mono p-2 bg-slate-900/80 rounded-xl border border-slate-800">Estado: Esperando archivos de origen...</div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. GIS -->
+        <!-- 4. MINIMAPA & SEDES GIS -->
         <section id="tab-gis" class="tab-content hidden space-y-6">
-            <h2 class="text-xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-map text-emerald-400"></i> Minimapa Global & Sucursales GIS</h2>
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 h-[380px] flex flex-col items-center justify-center text-slate-400 text-xs relative overflow-hidden">
-                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#06b6d4_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-map-location-dot text-emerald-400"></i> Minimapa Global & Sedes GIS</h2>
+                    <p class="text-xs text-slate-400 mt-1">Localización satelital en tiempo real de todas las sucursales, hoteles y proyectos activos en el mundo.</p>
+                </div>
+                <button onclick="showToast('Sincronizando coordenadas GPS globales...')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition">Actualizar Nodos</button>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 h-[400px] flex flex-col items-center justify-center text-slate-400 text-xs relative overflow-hidden shadow-xl">
+                <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#06b6d4_1.5px,transparent_1.5px)] [background-size:20px_20px]"></div>
                 <div class="text-center space-y-3 z-10">
-                    <i class="fa-solid fa-earth-americas text-4xl text-emerald-400 animate-spin" style="animation-duration: 20s;"></i>
-                    <p class="font-bold text-white">Mapa Satelital Geoespacial Sincronizado</p>
-                    <button onclick="showToast('Conectando con red satelital de coordenadas GPS...')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-semibold transition">Actualizar Nodos Globales</button>
+                    <i class="fa-solid fa-earth-americas text-5xl text-emerald-400 animate-spin" style="animation-duration: 25s;"></i>
+                    <p class="font-bold text-white text-sm">Red Global Satelital Nexura Activa</p>
+                    <p class="text-[11px] text-slate-400 max-w-sm">Monitoreo activo en Colombia, México, España y Estados Unidos.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 5. INVENTARIO -->
+        <!-- 5. INVENTARIO DE ACTIVOS 3D -->
         <section id="tab-inventario" class="tab-content hidden space-y-6">
             <div class="flex justify-between items-center">
-                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-boxes-stacked text-amber-400"></i> Inventario de Activos 3D</h2>
-                <button onclick="openInventoryModal()" class="bg-amber-600 hover:bg-amber-500 text-white text-xs px-4 py-2 rounded-lg font-semibold transition">+ Registrar Activo</button>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-boxes-stacked text-amber-400"></i> Inventario de Activos 3D</h2>
+                    <p class="text-xs text-slate-400 mt-1">Control detallado de equipos, mobiliario e infraestructura dentro del gemelo digital.</p>
+                </div>
+                <button onclick="openInventoryModal()" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-lg shadow-amber-600/20">+ Registrar Activo</button>
             </div>
-            <div class="bg-cardBg border border-slate-800 rounded-xl overflow-hidden">
+            <div class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
                 <table class="w-full text-left text-xs">
-                    <thead class="bg-slate-900 text-slate-400 border-b border-slate-800">
-                    <tr><th class="p-3">ID</th><th class="p-3">Nombre</th><th class="p-3">Sucursal</th><th class="p-3">Estado en Vivo</th></tr>
+                    <thead class="bg-slate-900 text-slate-400 border-b border-slate-800 font-semibold uppercase tracking-wider">
+                    <tr><th class="p-3.5">ID Activo</th><th class="p-3.5">Nombre / Descripción</th><th class="p-3.5">Ubicación / Sede</th><th class="p-3.5">Estado en Vivo</th></tr>
                     </thead>
                     <tbody id="inventory-table-body" class="divide-y divide-slate-800">
-                    <tr><td class="p-3 text-cyan-400 font-mono">INV-102</td><td class="p-3 text-white font-medium">Compresor Principal A1</td><td class="p-3 text-slate-300">Haceb Principal</td><td class="p-3 text-emerald-400"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 mr-1 animate-pulse"></span> Operativo</td></tr>
+                    <tr><td class="p-3.5 text-cyan-400 font-mono">AST-801</td><td class="p-3.5 text-white font-medium">Chiller Central HVAC #1</td><td class="p-3.5 text-slate-300">Hotel Grand Resort</td><td class="p-3.5 text-emerald-400"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Operativo</td></tr>
+                    <tr><td class="p-3.5 text-cyan-400 font-mono">AST-802</td><td class="p-3.5 text-white font-medium">Grúa Torre Principal</td><td class="p-3.5 text-slate-300">Constructora Torre Alta</td><td class="p-3.5 text-emerald-400"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Operativo</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- 6. USUARIOS -->
+        <!-- 6. USUARIOS & PERMISOS -->
         <section id="tab-usuarios" class="tab-content hidden space-y-6">
             <div class="flex justify-between items-center">
-                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-users-gear text-purple-400"></i> Usuarios & Permisos</h2>
-                <button onclick="openUserModal()" class="bg-purple-600 hover:bg-purple-500 text-white text-xs px-4 py-2 rounded-lg font-semibold transition">+ Nuevo Usuario</button>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-users-gear text-purple-400"></i> Usuarios & Permisos Cloud</h2>
+                    <p class="text-xs text-slate-400 mt-1">Gestión de accesos por roles para administradores, ingenieros y clientes.</p>
+                </div>
+                <button onclick="openUserModal()" class="bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-lg shadow-purple-600/20">+ Nuevo Usuario</button>
             </div>
-            <div class="bg-cardBg border border-slate-800 rounded-xl overflow-hidden">
+            <div class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
                 <table class="w-full text-left text-xs">
-                    <thead class="bg-slate-900 text-slate-400 border-b border-slate-800">
-                    <tr><th class="p-3">Usuario</th><th class="p-3">Rol</th><th class="p-3">Acceso Cloud</th></tr>
+                    <thead class="bg-slate-900 text-slate-400 border-b border-slate-800 font-semibold uppercase tracking-wider">
+                    <tr><th class="p-3.5">Usuario / Correo</th><th class="p-3.5">Rol Asignado</th><th class="p-3.5">Acceso Cloud</th></tr>
                     </thead>
                     <tbody id="users-table-body" class="divide-y divide-slate-800">
-                    <tr><td class="p-3 text-white font-medium">Alexanyer (Root)</td><td class="p-3 text-cyan-400">Master Admin</td><td class="p-3 text-slate-300">Global (Todas las sedes)</td></tr>
+                    <tr><td class="p-3.5 text-white font-medium">alexanyer@nexuratwin.com</td><td class="p-3.5 text-cyan-400">Master Admin (Root)</td><td class="p-3.5 text-slate-300">Global (Todas las sedes)</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- 7. GESTIÓN GLOBAL -->
-        <section id="tab-gestion" class="tab-content hidden space-y-6">
-            <h2 class="text-xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-shield-halved text-rose-400"></i> Panel Dueño - Gestión Global</h2>
-            <div class="bg-cardBg border border-slate-800 rounded-xl p-6 space-y-4 text-xs max-w-xl">
+        <!-- 7. GESTIÓN GLOBAL DE TENANTS (PANEL DUEÑO) -->
+        <section id="tab-gestion" class="tab-content hidden space-y-6 max-w-2xl">
+            <div>
+                <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-shield-halved text-rose-400"></i> Panel Dueño - Gestión Global</h2>
+                <p class="text-xs text-slate-400 mt-1">Aprovisiona nuevos clientes SaaS (Hoteles, constructoras, plantas) al instante.</p>
+            </div>
+            <div class="bg-cardBg border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
                 <div>
-                    <label class="text-slate-400 block mb-1 font-semibold">Aprovisionar Nueva Empresa / Tenant SaaS</label>
-                    <input type="text" id="new-client-name" placeholder="Nombre de la nueva compañía" class="bg-slate-900 border border-slate-700 rounded p-2.5 text-white w-full outline-none mb-3">
+                    <label class="text-slate-400 block mb-1 font-bold text-xs uppercase tracking-wider">Nombre del Nuevo Cliente / Tenant SaaS</label>
+                    <input type="text" id="new-client-name" placeholder="Ej: Hotel Hilton Cartagena / Constructora Bolivar" class="bg-slate-900 border border-slate-700 rounded-xl p-3 text-white w-full outline-none text-xs">
                 </div>
-                <button onclick="registerNewTenant()" class="bg-rose-600 hover:bg-rose-500 text-white font-semibold px-4 py-2.5 rounded transition">Aprovisionar Tenant en Tiempo Real</button>
+                <div>
+                    <label class="text-slate-400 block mb-1 font-bold text-xs uppercase tracking-wider">Sector Comercial</label>
+                    <select id="new-client-sector" class="bg-slate-900 border border-slate-700 rounded-xl p-3 text-white w-full outline-none text-xs">
+                        <option value="Hotel">Hotel / Resort</option>
+                        <option value="Constructora">Constructora / Inmobiliaria</option>
+                        <option value="Industrial">Planta Industrial</option>
+                    </select>
+                </div>
+                <button onclick="registerNewTenant()" class="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-3 rounded-xl text-xs transition shadow-lg shadow-rose-600/30">Aprovisionar Tenant SaaS en Vivo</button>
             </div>
         </section>
 
     </main>
 </div>
 
-<!-- SCRIPT DE TIEMPO REAL Y ACCIÓN DINÁMICA -->
+<!-- SCRIPT DE TIEMPO REAL & LÓGICA DE LA PLATAFORMA -->
 <script>
     // Sistema de notificaciones toast flotantes en tiempo real
     function showToast(message) {
         const container = document.getElementById('toast-container');
         const toast = document.createElement('div');
-        toast.className = 'bg-slate-900 border border-cyan-500/40 text-slate-100 text-xs px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-10 opacity-0 transition-all duration-300 pointer-events-auto';
-        toast.innerHTML = `<i class="fa-solid fa-bolt text-cyan-400 text-sm"></i><span>${message}</span>`;
+        toast.className = 'bg-slate-900 border border-cyan-500/50 text-slate-100 text-xs px-4 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-10 opacity-0 transition-all duration-300 pointer-events-auto backdrop-blur-md';
+        toast.innerHTML = `<i class="fa-solid fa-bolt text-cyan-400 text-sm animate-bounce"></i><span class="font-medium">${message}</span>`;
         container.appendChild(toast);
 
         setTimeout(() => {
@@ -348,7 +442,10 @@
         document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
         document.getElementById('tab-' + tabId).classList.remove('hidden');
 
-        document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('bg-blue-600', 'text-white', 'shadow-lg', 'shadow-blue-900/40'));
+        document.querySelectorAll('.nav-link').forEach(el => {
+            el.classList.remove('bg-blue-600', 'text-white', 'shadow-lg', 'shadow-blue-900/40');
+            el.classList.add('text-slate-300');
+        });
 
         if(window.innerWidth < 768) {
             document.getElementById('sidebar').classList.add('-translate-x-full');
@@ -359,43 +456,90 @@
         document.getElementById('sidebar').classList.toggle('-translate-x-full');
     }
 
+    // Selector dinámico de sectores desde el hero superior
+    function selectSector(sector) {
+        ['industrial', 'hotel', 'constructora', 'inmobiliaria'].forEach(s => {
+            const btn = document.getElementById('btn-sec-' + s);
+            if(btn) {
+                btn.className = "p-3 rounded-xl border border-slate-800 bg-cardBg text-slate-300 text-xs font-bold flex flex-col items-center gap-2 transition hover:border-slate-700";
+            }
+        });
+        const activeBtn = document.getElementById('btn-sec-' + sector);
+        if(activeBtn) {
+            activeBtn.className = "p-3 rounded-xl border border-cyan-500 bg-cyan-500/10 text-cyan-300 text-xs font-bold flex flex-col items-center gap-2 transition";
+        }
+
+        const selectCompany = document.getElementById('company-selector');
+        if(sector === 'hotel') selectCompany.value = 'c1';
+        else if(sector === 'constructora') selectCompany.value = 'c2';
+        else if(sector === 'industrial') selectCompany.value = 'c3';
+        else if(sector === 'inmobiliaria') selectCompany.value = 'c4';
+
+        updateContextUI(selectCompany.value);
+        showToast(`Sector activado: ${sector.toUpperCase()}. Gemelo digital configurado.`);
+    }
+
     function changeCompanyContext(select) {
-        const name = select.options[select.selectedIndex].text;
-        showToast(`Cambiando contexto en vivo a: ${name}`);
+        updateContextUI(select.value);
+        showToast(`Contexto cambiado a: ${select.options[select.selectedIndex].text}`);
+    }
+
+    function updateContextUI(val) {
+        const title = document.getElementById('visor-title');
+        const streamText = document.getElementById('stream-node-text');
+        const renderObj = document.getElementById('render-object-label');
+
+        if(val === 'c1') {
+            title.innerText = "Visualizador 3D: Hotel Grand Resort & Spa";
+            streamText.innerText = "Stream Activo: Nodo Hotel Caribe #2";
+            renderObj.innerText = "GEMELO 3D HOTEL";
+        } else if(val === 'c2') {
+            title.innerText = "Visualizador 3D: Constructora Torre Alta";
+            streamText.innerText = "Stream Activo: Nodo Obra Bogotá #4";
+            renderObj.innerText = "GEMELO 3D OBRA BIM";
+        } else if(val === 'c3') {
+            title.innerText = "Visualizador 3D: Haceb Planta Principal";
+            streamText.innerText = "Stream Activo: Nodo Industrial Medellín #1";
+            renderObj.innerText = "GEMELO 3D PLANTA";
+        } else {
+            title.innerText = "Visualizador 3D: Inmobiliaria Lotes del Pacífico";
+            streamText.innerText = "Stream Activo: Nodo Lote Macro #8";
+            renderObj.innerText = "GEMELO 3D LOTE";
+        }
     }
 
     function triggerMeshProcess() {
-        showToast('Pipeline de remoldeado fotogramétrico iniciado en servidores cloud...');
+        showToast('Pipeline de remoldeado fotogramétrico BIM iniciado en servidores cloud...');
     }
 
     function exportModel() {
-        showToast('Generando archivo CAD/BIM para descarga segura...');
+        showToast('Generando paquete CAD/BIM (.OBJ / .IFC / .DWG) para descarga segura...');
     }
 
     function handleDroneSubmit(e) {
         e.preventDefault();
-        showToast('¡Misión de vuelo autónomo programada y enviada al dron en campo!');
+        showToast('¡Misión de levantamiento programada y enviada a la flota de drones!');
         e.target.reset();
     }
 
     function handleFileUpload(files) {
         if(files.length > 0) {
-            document.getElementById('upload-status').innerText = `Procesando ${files.length} archivos en la nube...`;
-            showToast(`Recibidos ${files.length} archivos. Iniciando fotogrametría...`);
+            document.getElementById('upload-status.innerText = `Procesando ${files.length} archivos de levantamiento en la nube...`;');
+            showToast(`Recibidos ${files.length} archivos. Iniciando fotogrametría 3D...`);
             setTimeout(() => {
-                document.getElementById('upload-status').innerText = `¡Procesamiento completado con éxito!`;
-            }, 2000);
+                document.getElementById('upload-status').innerText = `¡Gemelo digital generado y texturizado con éxito!`;
+            }, 2500);
         }
     }
 
     function openInventoryModal() {
-        const name = prompt("Nombre del activo 3D:");
+        const name = prompt("Nombre del activo o equipo 3D:");
         if(name) {
             const tbody = document.getElementById('inventory-table-body');
             const row = document.createElement('tr');
-            row.innerHTML = `<td class="p-3 text-cyan-400 font-mono">INV-${Math.floor(Math.random()*900+100)}</td><td class="p-3 text-white font-medium">${name}</td><td class="p-3 text-slate-300">Planta Principal</td><td class="p-3 text-emerald-400"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 mr-1 animate-pulse"></span> Operativo</td>`;
+            row.innerHTML = `<td class="p-3.5 text-cyan-400 font-mono">AST-${Math.floor(Math.random()*900+100)}</td><td class="p-3.5 text-white font-medium">${name}</td><td class="p-3.5 text-slate-300">Sede Activa</td><td class="p-3.5 text-emerald-400"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Operativo</td>`;
             tbody.appendChild(row);
-            showToast(`Activo "${name}" registrado y sincronizado en la red global.`);
+            showToast(`Activo "${name}" registrado y sincronizado en el gemelo digital.`);
         }
     }
 
@@ -404,7 +548,7 @@
         if(email) {
             const tbody = document.getElementById('users-table-body');
             const row = document.createElement('tr');
-            row.innerHTML = `<td class="p-3 text-white font-medium">${email}</td><td class="p-3 text-cyan-400">Operador GIS</td><td class="p-3 text-slate-300">Acceso Restringido</td>`;
+            row.innerHTML = `<td class="p-3.5 text-white font-medium">${email}</td><td class="p-3.5 text-cyan-400">Operador BIM / Inmobiliario</td><td class="p-3.5 text-slate-300">Acceso Restringido</td>`;
             tbody.appendChild(row);
             showToast(`Usuario "${email}" autorizado en tiempo real.`);
         }
@@ -412,23 +556,24 @@
 
     function registerNewTenant() {
         const name = document.getElementById('new-client-name').value;
+        const sector = document.getElementById('new-client-sector').value;
         if(name) {
-            showToast(`¡Tenant SaaS aprovisionado y listo para "${name}"!`);
+            showToast(`¡Tenant SaaS aprovisionado con éxito para "${name}" (${sector})!`);
             document.getElementById('new-client-name').value = '';
         } else {
             showToast('Por favor escribe el nombre de la empresa.');
         }
     }
 
-    // Simulación de fluctuación de activos en vivo cada 6 segundos
+    // Simulación de fluctuación de activos en vivo cada 5 segundos
     setInterval(() => {
         const countElem = document.getElementById('live-assets-count');
         if(countElem) {
-            const current = parseInt(countElem.innerText.replace('.', ''));
-            const diff = Math.random() > 0.5 ? 1 : -1;
+            const current = parseInt(countElem.innerText.replace(',', ''));
+            const diff = Math.random() > 0.5 ? 2 : -1;
             countElem.innerText = (current + diff).toLocaleString();
         }
-    }, 6000);
+    }, 5000);
 </script>
 </body>
 </html>
